@@ -14,7 +14,9 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].Name)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Items[0].Name)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Items[0].Code)
@@ -23,7 +25,9 @@
                 @Html.DisplayNameFor(model => model.Items[0].Definition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].ValidFrom)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Items[0].ValidFrom)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Items[0].ValidTo)

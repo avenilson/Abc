@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abc.Data.Quantity;
 using Abc.Domain.Quantity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,15 +9,39 @@ namespace Abc.Infra.Quantity
 {
     public class MeasuresRepository: IMeasuresRepository
     {
-        private readonly QuantityDbContext db;
+        protected internal QuantityDbContext db;
+        public string SortOrder { get; set;}
         public MeasuresRepository(QuantityDbContext c)
         {
             db = c;
         }
         public async Task<List<Measure>> Get() //index
         {
-            var l = await db.Measures.ToListAsync();
-            return l.Select(e => (new Measure(e))).ToList();
+            var list = await createSorted().ToListAsync();
+            return list.Select(e => new Measure(e)).ToList();
+        }
+
+        private IQueryable<MeasureData> createSorted()
+        {
+            IQueryable<MeasureData> measures = from s in db.Measures select s;
+
+            switch (SortOrder)
+            {
+                case "name_desc":
+                    measures = measures.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    measures = measures.OrderBy(s => s.ValidFrom);
+                    break;
+                case "date_desc":
+                    measures = measures.OrderByDescending(s => s.ValidFrom);
+                    break;
+                default:
+                    measures = measures.OrderBy(s => s.Name);
+                    break;
+            }
+
+            return measures.AsNoTracking();
         }
 
         public async Task<Measure> Get(string id) //delete
@@ -27,11 +52,12 @@ namespace Abc.Infra.Quantity
 
         public async Task Delete(string id) //details
         {
-            var d = await db.Measures.FindAsync(id);
+            if (id is null) return;
 
-            if (d is null) return;
+            var v = await db.Measures.FindAsync(id);
 
-            db.Measures.Remove(d);
+            if (v is null) return;
+            db.Measures.Remove(v);
             await db.SaveChangesAsync();
         }
 
