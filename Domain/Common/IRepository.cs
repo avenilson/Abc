@@ -11,5 +11,6 @@ namespace Abc.Domain.Common
         Task Add(T obj);
         Task Update(T obj);
         string SortOrder { get; set; }
+        string SearchString { get; set; }
     }
 }
