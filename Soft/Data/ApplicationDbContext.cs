@@ -13,6 +13,11 @@ namespace Abc.Soft.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            InitializeTables(builder);
+        }
+
+        internal void InitializeTables(ModelBuilder builder)
+        {
             QuantityDbContext.InitializeTables(builder);
         }
     }
