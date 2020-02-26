@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{CB3157CB-3DA2-43B0-B070-384563442FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{CB3157CB-3DA2-43B0-B070-384563442FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{E57C74CA-755A-43EA-A4A9-76B8A9FBF599}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{E57C74CA-755A-43EA-A4A9-76B8A9FBF599}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "Facade\Facade.csproj", "{12485EF3-9A42-45A0-B842-6B801A9B0887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade", "Facade\Facade.csproj", "{12485EF3-9A42-45A0-B842-6B801A9B0887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{F17D0127-C96F-4435-B9D1-702D9D805C5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{F17D0127-C96F-4435-B9D1-702D9D805C5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pages", "Pages\Pages.csproj", "{51613A9F-DC84-47A6-AC0F-FF12B59BD431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pages", "Pages\Pages.csproj", "{51613A9F-DC84-47A6-AC0F-FF12B59BD431}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft", "Soft\Soft.csproj", "{4CDD6949-3FD8-4085-B6B9-9BA422139FED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soft", "Soft\Soft.csproj", "{4CDD6949-3FD8-4085-B6B9-9BA422139FED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FC118C92-51A3-4E6F-BB24-028CAD3420DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4CDD6949-3FD8-4085-B6B9-9BA422139FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CDD6949-3FD8-4085-B6B9-9BA422139FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CDD6949-3FD8-4085-B6B9-9BA422139FED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC118C92-51A3-4E6F-BB24-028CAD3420DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC118C92-51A3-4E6F-BB24-028CAD3420DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC118C92-51A3-4E6F-BB24-028CAD3420DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC118C92-51A3-4E6F-BB24-028CAD3420DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
