@@ -25,7 +25,7 @@ namespace Abc.Infra.Quantity
 
         private IQueryable<MeasureData> createFiltered(IQueryable<MeasureData> set)
         {
-            if (!string.IsNullOrEmpty(SearchString)) return set;
+            if (string.IsNullOrEmpty(SearchString)) return set;
             return set.Where(s => s.Name.Contains(SearchString) 
                                   || s.Code.Contains(SearchString) 
                                   || s.Id.Contains(SearchString) 

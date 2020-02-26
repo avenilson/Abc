@@ -8,9 +8,8 @@ namespace Abc.Pages.Quantity
 {
     public abstract class MeasuresPage : PageModel
     {
-        protected internal readonly IMeasuresRepository data;
-
-        protected internal MeasuresPage(IMeasuresRepository r) => data = r;
+        protected internal readonly IMeasuresRepository db;
+        protected internal MeasuresPage(IMeasuresRepository r) => db = r;
 
         [BindProperty]
         public MeasureView Item { get; set; }

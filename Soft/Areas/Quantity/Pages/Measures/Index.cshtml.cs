@@ -15,17 +15,17 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
         {
             NameSort = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
-            data.SortOrder = sortOrder;
+
+            db.SortOrder = sortOrder;
             SearchString = searchString;
-            data.SearchString = SearchString;
-            var l = await data.Get();
+            db.SearchString = SearchString;
+            var l = await db.Get();
             Items = new List<MeasureView>();
             foreach (var e in l)
             {
                 Items.Add(MeasureViewFactory.Create(e));
             }
         }
-
         public string DateSort { get; set; }
         public string NameSort { get; set; }
     }

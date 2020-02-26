@@ -17,7 +17,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid) return Page(); //vastavus nouetele 
-            await data.Add(MeasureViewFactory.Create(Item));
+            await db.Add(MeasureViewFactory.Create(Item));
 
             return RedirectToPage("./Index"); //naitab listi
         }
