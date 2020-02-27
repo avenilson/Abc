@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Open.Pages.Extensions
+namespace Abc.Pages.Extensions
 {
     public static class EditControlsForHtmlExtension
     {
