@@ -1,4 +1,5 @@
 using System;
+using Abc.Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests
@@ -20,14 +21,19 @@ namespace Tests
             Assert.AreEqual(typeof(TBaseClass), type.BaseType);
         }
 
-        protected static void isNullableProperty<T>(Func<T> get, Action<T> set, Func<T> rnd) 
+        protected static void isNullableProperty<T>(Func<T> get, Action<T> set)
         {
-            var d = rnd();
+            isProperty(get,set);
+            set(default);
+            Assert.IsNull(get());
+        }
+
+        protected static void isProperty<T>(Func<T> get, Action<T> set)
+        {
+            var d = (T)GetRandom.Value(typeof(T));
             Assert.AreNotEqual(d, get());
             set(d);
             Assert.AreEqual(d, get());
-            //set(null);
-            //Assert.IsNull(get());
         }
     }
 }

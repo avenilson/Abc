@@ -20,13 +20,13 @@ namespace Tests.Data.Common
         [TestMethod]
         public void ValidFromTest()
         {
-            isNullableProperty(()=>obj.ValidFrom, x => obj.ValidFrom =x, () => DateTime.Now);
+            isNullableProperty(()=>obj.ValidFrom, x => obj.ValidFrom =x);
         }
 
         [TestMethod]
         public void ValidToTest()
         {
-            isNullableProperty(() => obj.ValidTo, x => obj.ValidTo = x, () => DateTime.Now);
+            isNullableProperty(() => obj.ValidTo, x => obj.ValidTo = x);
         }
     }
 }
