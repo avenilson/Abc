@@ -8,15 +8,15 @@ namespace Abc.Pages.Extensions
 {
     public static class EditControlsForHtmlExtension
     {
-        public static IHtmlContent EditControlsFor<TClassType, TPropertyType>
-            (this IHtmlHelper<TClassType> htmlHelper, Expression<Func<TClassType, TPropertyType>> expression)
+        public static IHtmlContent EditControlsFor<TModel, TResult>
+            (this IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression)
         {
             var s = htmlString(htmlHelper,expression); 
             return new HtmlContentBuilder(s);
         }
 
-        internal static List<object> htmlString<TClassType, TPropertyType>
-        (IHtmlHelper<TClassType> htmlHelper, Expression<Func<TClassType, TPropertyType>> expression)
+        internal static List<object> htmlString<TModel, TResult>
+        (IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression)
         {
             return new List<object>
             {
