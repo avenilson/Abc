@@ -36,7 +36,6 @@ namespace Abc.Infra.Quantity
                                   || s.ValidFrom.ToString().Contains(SearchString)
                                   || s.ValidTo.ToString().Contains(SearchString));
         }
-
         private IQueryable<MeasureData> createSorted()
         {
             IQueryable<MeasureData> measures = from s in dbSet select s;
