@@ -44,7 +44,7 @@ namespace Abc.Infra
             return typeof(TData).GetProperty(name);
         }
 
-        private string getName()
+        internal string getName()
         {
             if (string.IsNullOrEmpty(SortOrder)) return string.Empty;
             var idx = SortOrder.IndexOf(DescendingString, StringComparison.Ordinal);
@@ -55,6 +55,6 @@ namespace Abc.Infra
         internal IQueryable<TData> setOrderBy(IQueryable<TData> data, Expression<Func<TData, object>> e) 
             => isDescending() ? data.OrderByDescending(e) : data.OrderBy(e);
         
-        internal bool isDescending() => SortOrder.EndsWith(DescendingString);
+        internal bool isDescending() => !string.IsNullOrEmpty(SortOrder) && SortOrder.EndsWith(DescendingString);
     }
 }
