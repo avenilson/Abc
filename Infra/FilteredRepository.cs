@@ -1,4 +1,5 @@
-﻿using Abc.Data.Common;
+﻿using System.Linq;
+using Abc.Data.Common;
 using Abc.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,16 @@ namespace Abc.Infra
         where TDomain : Entity<TData>, new()
     {
         public string SearchString { get; set; }
-
         protected FilteredRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+        protected internal override IQueryable<TData> CreateSqlQuery()
+        {
+            var query = base.CreateSqlQuery();
+            query = AddFiltering(query);
+            return query;
+        }
+        protected internal virtual IQueryable<TData> AddFiltering(IQueryable<TData> query)
+        {
+            return query;
+        }
     }
 }
