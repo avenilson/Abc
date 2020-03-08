@@ -19,15 +19,14 @@ namespace Abc.Infra
         protected internal IQueryable<TData> setSorting(IQueryable<TData> data)
         {
             var expression = createExpression();
-            if (expression is null) return data;
-            return setOrderBy(data, expression);
+            var r = expression is null ? data: setOrderBy(data, expression);
+            return r;
         }
 
         internal Expression<Func<TData, object>> createExpression()
         {
             var property = findProperty();
-            if (property is null) return null;
-            return lambdaExpression(property);
+            return property is null ? null: lambdaExpression(property);
         }
 
         internal Expression<Func<TData, object>> lambdaExpression(PropertyInfo p)
@@ -52,9 +51,21 @@ namespace Abc.Infra
             return SortOrder;
         }
 
-        internal IQueryable<TData> setOrderBy(IQueryable<TData> data, Expression<Func<TData, object>> e) 
-            => isDescending() ? data.OrderByDescending(e) : data.OrderBy(e);
-        
+        internal IQueryable<TData> setOrderBy(IQueryable<TData> data, Expression<Func<TData, object>> e)
+        {
+            if (data is null) return null;
+            if (e is null) return data;
+            try
+            {
+                return isDescending() ? data.OrderByDescending(e) : data.OrderBy(e);
+            }
+            catch
+            {
+                return data;
+            }
+
+        }
+
         internal bool isDescending() => !string.IsNullOrEmpty(SortOrder) && SortOrder.EndsWith(DescendingString);
     }
 }
