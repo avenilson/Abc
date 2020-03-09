@@ -3,13 +3,13 @@
   <Class Name="Abc.Infra.Quantity.MeasuresRepository">
     <Position X="0.5" Y="4.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAABAAAAAAIAAAAAAAAAAAAAAAAAAiAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>Quantity\MeasuresRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Abc.Infra.BaseRepository&lt;TDomain, TData&gt;">
-    <Position X="5.25" Y="0.5" Width="2" />
+    <Position X="5.25" Y="1" Width="2" />
     <TypeIdentifier>
       <HashCode>AAYQAAAAAAAQAABAAAAAAAAAAAEgIAAACAAAEAAAgAA=</HashCode>
       <FileName>BaseRepository.cs</FileName>
@@ -27,15 +27,15 @@
   <Class Name="Abc.Infra.FilteredRepository&lt;TDomain, TData&gt;">
     <Position X="2.75" Y="5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAIAAAAAAAACAAAAA=</HashCode>
       <FileName>FilteredRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Abc.Infra.PaginatedRepository&lt;TDomain, TData&gt;">
-    <Position X="2.75" Y="1.75" Width="1.75" />
+    <Position X="2.75" Y="1" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAgAAAAAAAgAAgABAEAAUAAAAIAACAAAAEAAAAAA=</HashCode>
       <FileName>PaginatedRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
