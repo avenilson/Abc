@@ -1,5 +1,4 @@
-﻿using System.Dynamic;
-using Abc.Data.Common;
+﻿using Abc.Data.Common;
 
 namespace Abc.Domain.Common
 {
