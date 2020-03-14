@@ -6,7 +6,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.Units
 {
     public class IndexModel : UnitsPage
     {
-        public IndexModel(IUnitsRepository r) : base(r){ }
+        public IndexModel(IUnitsRepository r, IMeasuresRepository m) : base(r, m){ }
 
         public async Task OnGetAsync(string sortOrder,
             string currentFilter, string searchString, int? pageIndex)
