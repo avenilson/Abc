@@ -9,9 +9,9 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
         public IndexModel(IMeasuresRepository r) : base(r){ }
 
         public async Task OnGetAsync(string sortOrder,
-            string currentFilter, string searchString, int? pageIndex)
+            string currentFilter, string searchString, int? pageIndex, string fixedFilter, string fixedValue)
         {
-            await GetList(sortOrder, currentFilter, searchString, pageIndex);
+            await GetList(sortOrder, currentFilter, searchString, pageIndex, fixedFilter, fixedValue);
         }
     }
 }
