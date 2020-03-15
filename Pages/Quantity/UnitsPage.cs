@@ -29,14 +29,16 @@ namespace Abc.Pages.Quantity
 
         public IEnumerable<SelectListItem> Measures { get; }
         public override string ItemId => Item.Id;
-        protected internal override Unit ToObject(UnitView view)
-        {
-            return UnitViewFactory.Create(view);
-        }
+        protected internal override Unit ToObject(UnitView view) => UnitViewFactory.Create(view);
 
-        protected internal override UnitView ToView(Unit obj)
+        protected internal override UnitView ToView(Unit obj) => UnitViewFactory.Create(obj);
+
+        public string GetMeasureName(string measureId)
         {
-            return UnitViewFactory.Create(obj);
+            foreach (var m in Measures)
+                if (m.Value == measureId)
+                    return m.Text;
+            return "Unspecified";
         }
     }
 }
