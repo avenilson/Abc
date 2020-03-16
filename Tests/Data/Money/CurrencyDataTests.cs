@@ -2,7 +2,7 @@
 using Abc.Data.Money;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Abc.Tests.Data.Common.Money
+namespace Abc.Tests.Data.Money
 {
     [TestClass]
     public class CurrencyDataTests : SealedClassTests<CurrencyData, DefinedEntityData> { }
