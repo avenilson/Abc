@@ -8,8 +8,10 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
     public class DetailsModel : MeasuresPage
     {
         public DetailsModel(IMeasuresRepository r) : base(r) { }
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
+            FixedFilter = fixedFilter;
+            FixedValue = fixedValue;
             await GetObject(id);
             return Page();
         }

@@ -8,15 +8,19 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
     public class EditModel : MeasuresPage
     {
         public EditModel(IMeasuresRepository r) : base(r) { }
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
+            FixedFilter = fixedFilter;
+            FixedValue = fixedValue;
             await GetObject(id);
             return Page();
         }
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string fixedFilter, string fixedValue)
         {
+            FixedFilter = fixedFilter;
+            FixedValue = fixedValue;
             await UpdateObject();
-            return RedirectToPage("./Index");
+            return Redirect($"/Quantity/Measures/Index?fixedFilter={FixedFilter}&fixedValue={fixedValue}");
         }
     }
 }

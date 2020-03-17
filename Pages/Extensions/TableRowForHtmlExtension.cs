@@ -7,13 +7,13 @@ namespace Abc.Pages.Extensions {
         public static IHtmlContent TableRowFor(
             this IHtmlHelper htmlHelper, string page, object index,
             params IHtmlContent[] values) {
-            var s = htmlStrings(page, index, values);
+            var s = HtmlStrings(page, index, values);
             return new HtmlContentBuilder(s);
         }
 
-        private static List<object> htmlStrings(string page, object index, IHtmlContent[] values) {
+        private static List<object> HtmlStrings(string page, object index, IHtmlContent[] values) {
             var list = new List<object>();
-            foreach (var value in values) addValue(list, value);
+            foreach (var value in values) AddValue(list, value);
             list.Add(new HtmlString("<td>"));
             list.Add(new HtmlString($"<a href=\"{page}/Edit?id={index}\">{Constants.EditLinkTitle}</a>"));
             list.Add(" | ");
@@ -30,13 +30,13 @@ namespace Abc.Pages.Extensions {
             string fixedFilter, string fixedValue,
 
             params IHtmlContent[] values) {
-            var s = htmlStrings(page, index, fixedFilter, fixedValue, values);
+            var s = HtmlStrings(page, index, fixedFilter, fixedValue, values);
             return new HtmlContentBuilder(s);
         }
 
-        private static List<object> htmlStrings(string page, object index, string fixedFilter, string fixedValue, IHtmlContent[] values) {
+        private static List<object> HtmlStrings(string page, object index, string fixedFilter, string fixedValue, IHtmlContent[] values) {
             var list = new List<object>();
-            foreach (var value in values) addValue(list, value);
+            foreach (var value in values) AddValue(list, value);
             list.Add(new HtmlString("<td>"));
             list.Add(new HtmlString($"<a href=\"{page}/Edit?id={index}&fixedFilter={fixedFilter}&fixedValue={fixedValue}\">{Constants.EditLinkTitle}</a>"));
             list.Add(" | ");
@@ -54,14 +54,14 @@ namespace Abc.Pages.Extensions {
 
             params IHtmlContent[] values)
         {
-            var s = htmlStringsWithSelect(page, index, sortOrder, searchString, pageIndex, fixedFilter, fixedValue, values);
+            var s = HtmlStringsWithSelect(page, index, sortOrder, searchString, pageIndex, fixedFilter, fixedValue, values);
             return new HtmlContentBuilder(s);
         }
 
-        private static List<object> htmlStringsWithSelect(string page, object id, string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, IHtmlContent[] values)
+        private static List<object> HtmlStringsWithSelect(string page, object id, string sortOrder, string searchString, int pageIndex, string fixedFilter, string fixedValue, IHtmlContent[] values)
         {
             var list = new List<object>();
-            foreach (var value in values) addValue(list, value);
+            foreach (var value in values) AddValue(list, value);
             var s = $"?id={id}";
             s += $"&fixedFilter={fixedFilter}";
             s += $"&fixedValue={fixedValue}";
@@ -88,14 +88,14 @@ namespace Abc.Pages.Extensions {
 
             params IHtmlContent[] values)
         {
-            var s = htmlStringsWithSelect(page, index, fixedFilter, fixedValue, values);
+            var s = HtmlStringsWithSelect(page, index, fixedFilter, fixedValue, values);
             return new HtmlContentBuilder(s);
         }
 
-        private static List<object> htmlStringsWithSelect(string page, object index, string fixedFilter, string fixedValue, IHtmlContent[] values)
+        private static List<object> HtmlStringsWithSelect(string page, object index, string fixedFilter, string fixedValue, IHtmlContent[] values)
         {
             var list = new List<object>();
-            foreach (var value in values) addValue(list, value);
+            foreach (var value in values) AddValue(list, value);
             list.Add(new HtmlString("<td>"));
             list.Add(new HtmlString($"<a href=\"{page}/Select?id={index}&fixedFilter={fixedFilter}&fixedValue={fixedValue}\">{Constants.SelectLinkTitle}</a>"));
             list.Add(" | ");
@@ -109,7 +109,7 @@ namespace Abc.Pages.Extensions {
             return list;
         }
 
-        internal static void addValue(List<object> htmlStrings, IHtmlContent value) {
+        internal static void AddValue(List<object> htmlStrings, IHtmlContent value) {
             if (htmlStrings is null) return;
             if (value is null) return;
             htmlStrings.Add(new HtmlString("<td>"));

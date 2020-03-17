@@ -118,7 +118,8 @@ namespace Abc.Pages
             else if (SortOrder.EndsWith("_desc")) sortOrder = name;
             else sortOrder = name + "_desc";
 
-            return $"{page}?sortOrder={sortOrder}&currentFilter={SearchString}";
+            return $"{page}?sortOrder={sortOrder}&currentFilter={SearchString}" +
+                   $"&fixedFilter={FixedFilter}&fixedValue={FixedValue}";
         }
 
         protected internal async Task GetList(string sortOrder, string currentFilter, string searchString, int? pageIndex, string fixedFilter, string fixedValue)
