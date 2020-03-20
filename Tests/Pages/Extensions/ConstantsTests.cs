@@ -23,8 +23,8 @@ namespace Abc.Tests.Pages.Extensions
         [TestMethod]
         public void DeleteLinkTitleTest() => Assert.AreEqual("Delete", Constants.DeleteLinkTitle);
 
-        [TestMethod]
-        public void SelectLinkTitleTest() => Assert.AreEqual("Select", Constants.SelectLinkTitle);
+        //[TestMethod]
+        //public void SelectLinkTitleTest() => Assert.AreEqual("Select", Constants.SelectLinkTitle);
 
         [TestMethod]
         public void BusinessMenuTitleTest() => Assert.AreEqual("Business", Constants.BusinessMenuTitle);
