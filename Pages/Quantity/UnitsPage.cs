@@ -31,10 +31,10 @@ namespace Abc.Pages.Quantity
         public override string ItemId => Item?.Id ?? string.Empty;
         protected internal override string GetPageUrl() => "/Quantity/Units";
 
-        protected internal override string GetPageSubtitle()
+        protected internal override string GetPageSubTitle()
         {
             return FixedValue is null 
-                ? base.GetPageSubtitle() 
+                ? base.GetPageSubTitle() 
                 : $"For {GetMeasureName(FixedValue)}";
         }
 

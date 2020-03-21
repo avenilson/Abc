@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -27,7 +26,7 @@ namespace Abc.Pages
         public abstract string ItemId { get; }
 
         public string PageTitle { get; set; }
-        public string PageSubTitle => GetPageSubtitle();
+        public string PageSubTitle => GetPageSubTitle();
         public string IndexUrl => GetIndexUrl();
 
         protected internal string GetIndexUrl()
@@ -39,7 +38,7 @@ namespace Abc.Pages
 
         protected internal abstract string GetPageUrl();
 
-        protected internal virtual string GetPageSubtitle()
+        protected internal virtual string GetPageSubTitle()
         {
             return string.Empty;
         }
@@ -147,12 +146,12 @@ namespace Abc.Pages
             FixedFilter = fixedFilter;
             FixedValue = fixedValue;
             SortOrder = sortOrder;
-            SearchString = getSearchString(currentFilter, searchString,ref pageIndex);
+            SearchString = GetSearchString(currentFilter, searchString,ref pageIndex);
             PageIndex = pageIndex ?? 1;
             Items = await getList();
         }
 
-        private string getSearchString(string currentFilter, string searchString, ref int? pageIndex)
+        private string GetSearchString(string currentFilter, string searchString, ref int? pageIndex)
         {
             if (searchString != null)
             {

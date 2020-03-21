@@ -11,7 +11,7 @@ namespace Abc.Pages.Extensions
         public static IHtmlContent DisplayControlsFor<TModel, TResult>
             (this IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression)
         {
-            var s = htmlString(htmlHelper, expression);
+            var s = htmlStrings(htmlHelper, expression);
             return new HtmlContentBuilder(s);
         }
 
@@ -22,7 +22,7 @@ namespace Abc.Pages.Extensions
             return new HtmlContentBuilder(s);
         }
 
-        internal static List<object> htmlString<TModel, TResult>
+        internal static List<object> htmlStrings<TModel, TResult>
         (IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression)
         {
             return new List<object>
