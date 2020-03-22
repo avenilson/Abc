@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Abc.Facade.Quantity.UnitView">
+    <Position X="1.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Quantity\UnitView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Facade.Common.DefinedView">
+    <Position X="1.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\DefinedView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Facade.Common.NamedView" Collapsed="true">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\NamedView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Facade.Common.UniqueEntityView" Collapsed="true">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\UniqueEntityView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Facade.Common.PeriodView" Collapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Common\PeriodView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
