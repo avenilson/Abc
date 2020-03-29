@@ -23,16 +23,16 @@ namespace Abc.Infra
             return query;
         }
 
-        private IQueryable<TData> AddFixedFiltering(IQueryable<TData> query)
+        internal IQueryable<TData> AddFixedFiltering(IQueryable<TData> query)
         {
             var expression = CreateFixedWhereExpression();
             return expression is null? query: query.Where(expression);
         }
 
-        private Expression<Func<TData, bool>> CreateFixedWhereExpression()
+        internal Expression<Func<TData, bool>> CreateFixedWhereExpression()
         {
-            if (FixedFilter is null) return null;
-            if (FixedValue is null) return null;
+            if (string.IsNullOrWhiteSpace(FixedValue)) return null;
+            if (string.IsNullOrWhiteSpace(FixedFilter)) return null;
             var param = Expression.Parameter(typeof(TData), "s");
 
             var p = typeof(TData).GetProperty(FixedFilter);
@@ -57,6 +57,7 @@ namespace Abc.Infra
 
         internal Expression<Func<TData, bool>> CreateWhereExpression()
         {
+            if (string.IsNullOrWhiteSpace(SearchString)) return null;
             var param = Expression.Parameter(typeof(TData), "s");
 
             Expression predicate = null;
