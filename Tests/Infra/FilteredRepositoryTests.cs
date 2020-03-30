@@ -15,10 +15,10 @@ namespace Abc.Tests.Infra
         SortedRepository<Measure, MeasureData>>
     {
 
-        private class TestClass : FilteredRepository<Measure, MeasureData>
+        private class testClass : FilteredRepository<Measure, MeasureData>
         {
 
-            public TestClass(DbContext c, DbSet<MeasureData> s) : base(c, s) { }
+            public testClass(DbContext c, DbSet<MeasureData> s) : base(c, s) { }
 
             protected internal override Measure ToDomainObject(MeasureData d) => new Measure(d);
 
@@ -40,7 +40,7 @@ namespace Abc.Tests.Infra
                 .UseInMemoryDatabase("TestDb")
                 .Options;
             var c = new QuantityDbContext(options);
-            obj = new TestClass(c, c.Measures);
+            obj = new testClass(c, c.Measures);
         }
 
         [TestMethod]
@@ -58,19 +58,19 @@ namespace Abc.Tests.Infra
         [TestMethod]
         public void CreateSqlQueryTest()
         {
-            var sql = obj.CreateSqlQuery();
+            var sql = obj.createSqlQuery();
             Assert.IsNotNull(sql);
         }
 
         [TestMethod]
         public void AddFixedFilteringTest()
         {
-            var sql = obj.CreateSqlQuery();
+            var sql = obj.createSqlQuery();
             var fixedFilter = GetMember.Name<MeasureData>(x => x.Definition);
             obj.FixedFilter = fixedFilter;
             var fixedValue = GetRandom.String();
             obj.FixedValue = fixedValue;
-            var sqlNew = obj.AddFixedFiltering(sql);
+            var sqlNew = obj.addFixedFiltering(sql);
             Assert.IsNotNull(sqlNew);
         }
 
@@ -83,7 +83,7 @@ namespace Abc.Tests.Infra
             obj.FixedFilter = p.Name;
             var fixedValue = GetRandom.String();
             obj.FixedValue = fixedValue;
-            var e = obj.CreateFixedWhereExpression();
+            var e = obj.createFixedWhereExpression();
             Assert.IsNotNull(e);
             var s = e.ToString();
 
@@ -95,21 +95,21 @@ namespace Abc.Tests.Infra
         }
 
         [TestMethod]
-        public void CreateFixedWhereExpressionOnFixedFilterNullTest()
+        public void CreateFixedWhereExpressionOnFidexFilterNullTest()
         {
-            Assert.IsNull(obj.CreateFixedWhereExpression());
+            Assert.IsNull(obj.createFixedWhereExpression());
             obj.FixedValue = GetRandom.String();
             obj.FixedFilter = GetRandom.String();
-            Assert.IsNull(obj.CreateFixedWhereExpression());
+            Assert.IsNull(obj.createFixedWhereExpression());
         }
 
         [TestMethod]
         public void AddFilteringTest()
         {
-            var sql = obj.CreateSqlQuery();
+            var sql = obj.createSqlQuery();
             var searchString = GetRandom.String();
             obj.SearchString = searchString;
-            var sqlNew = obj.AddFiltering(sql);
+            var sqlNew = obj.addFiltering(sql);
             Assert.IsNotNull(sqlNew);
         }
 
@@ -118,7 +118,7 @@ namespace Abc.Tests.Infra
         {
             var searchString = GetRandom.String();
             obj.SearchString = searchString;
-            var e = obj.CreateWhereExpression();
+            var e = obj.createWhereExpression();
             Assert.IsNotNull(e);
             var s = e.ToString();
 
@@ -135,8 +135,10 @@ namespace Abc.Tests.Infra
         public void CreateWhereExpressionWithNullSearchStringTest()
         {
             obj.SearchString = null;
-            var e = obj.CreateWhereExpression();
+            var e = obj.createWhereExpression();
             Assert.IsNull(e);
         }
+
     }
+
 }

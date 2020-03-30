@@ -23,7 +23,7 @@ namespace Abc.Infra
 
         public virtual async Task<List<TDomain>> Get()
         {
-            var query = CreateSqlQuery(); 
+            var query = createSqlQuery(); 
             var set = await RunSqlQueryAsync(query);
             return ToDomainObjectsList(set);
         }
@@ -37,7 +37,7 @@ namespace Abc.Infra
             => await query.AsNoTracking().ToListAsync();
         
 
-        protected internal virtual IQueryable<TData> CreateSqlQuery()
+        protected internal virtual IQueryable<TData> createSqlQuery()
         {
             var query =from s in dbSet select s; //sql paring
             return query;

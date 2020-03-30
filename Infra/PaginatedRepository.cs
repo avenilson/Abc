@@ -27,9 +27,9 @@ namespace Abc.Infra
 
         internal int CountTotalPages(int count, in int pageSize)=> (int)Math.Ceiling(count / (double)pageSize);
 
-        internal int GetItemsCount()=> base.CreateSqlQuery().CountAsync().Result;
+        internal int GetItemsCount()=> base.createSqlQuery().CountAsync().Result;
 
-        protected internal override IQueryable<TData> CreateSqlQuery()=> AddSkipAndTake(base.CreateSqlQuery());
+        protected internal override IQueryable<TData> createSqlQuery()=> AddSkipAndTake(base.createSqlQuery());
 
         private IQueryable<TData> AddSkipAndTake(IQueryable<TData> query)
         {

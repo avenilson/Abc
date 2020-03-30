@@ -7,29 +7,34 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Abc.Infra
 {
-    public abstract class FilteredRepository<TDomain, TData>:SortedRepository<TDomain, TData>, IFiltering
+
+    public abstract class FilteredRepository<TDomain, TData> : SortedRepository<TDomain, TData>, IFiltering
         where TData : PeriodData, new()
         where TDomain : Entity<TData>, new()
     {
+
         public string SearchString { get; set; }
         public string FixedFilter { get; set; }
         public string FixedValue { get; set; }
+
         protected FilteredRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
-        protected internal override IQueryable<TData> CreateSqlQuery()
+
+        protected internal override IQueryable<TData> createSqlQuery()
         {
-            var query = base.CreateSqlQuery();
-            query = AddFixedFiltering(query);
-            query = AddFiltering(query);
+            var query = base.createSqlQuery();
+            query = addFixedFiltering(query);
+            query = addFiltering(query);
+
             return query;
         }
 
-        internal IQueryable<TData> AddFixedFiltering(IQueryable<TData> query)
+        internal IQueryable<TData> addFixedFiltering(IQueryable<TData> query)
         {
-            var expression = CreateFixedWhereExpression();
-            return expression is null? query: query.Where(expression);
+            var expression = createFixedWhereExpression();
+            return expression is null ? query : query.Where(expression);
         }
 
-        internal Expression<Func<TData, bool>> CreateFixedWhereExpression()
+        internal Expression<Func<TData, bool>> createFixedWhereExpression()
         {
             if (string.IsNullOrWhiteSpace(FixedValue)) return null;
             if (string.IsNullOrWhiteSpace(FixedFilter)) return null;
@@ -41,21 +46,20 @@ namespace Abc.Infra
             Expression body = Expression.Property(param, p);
             if (p.PropertyType != typeof(string))
                 body = Expression.Call(body, "ToString", null);
-            body = Expression.Equal(body,Expression.Constant(FixedValue));
+            body = Expression.Call(body, "Contains", null, Expression.Constant(FixedValue));
             var predicate = body;
-            
+
             return Expression.Lambda<Func<TData, bool>>(predicate, param);
         }
-    
 
-        internal IQueryable<TData> AddFiltering(IQueryable<TData> query)
+        internal IQueryable<TData> addFiltering(IQueryable<TData> query)
         {
             if (string.IsNullOrEmpty(SearchString)) return query;
-            var expression = CreateWhereExpression();
-            return query.Where(expression);
+            var expression = createWhereExpression();
+            return expression is null ? query : query.Where(expression);
         }
 
-        internal Expression<Func<TData, bool>> CreateWhereExpression()
+        internal Expression<Func<TData, bool>> createWhereExpression()
         {
             if (string.IsNullOrWhiteSpace(SearchString)) return null;
             var param = Expression.Parameter(typeof(TData), "s");
@@ -73,5 +77,7 @@ namespace Abc.Infra
 
             return predicate is null ? null : Expression.Lambda<Func<TData, bool>>(predicate, param);
         }
+
     }
+
 }
