@@ -14,7 +14,6 @@ namespace Abc.Tests.Infra
     public class FilteredRepositoryTests : AbstractClassTests<FilteredRepository<Measure, MeasureData>,
         SortedRepository<Measure, MeasureData>>
     {
-
         private class testClass : FilteredRepository<Measure, MeasureData>
         {
 

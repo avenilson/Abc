@@ -31,7 +31,7 @@ namespace Abc.Infra
 
         protected internal override IQueryable<TData> createSqlQuery()=> AddSkipAndTake(base.createSqlQuery());
 
-        private IQueryable<TData> AddSkipAndTake(IQueryable<TData> query)
+        internal IQueryable<TData> AddSkipAndTake(IQueryable<TData> query)
         {
             if (PageIndex < 1) return query;
             return query
