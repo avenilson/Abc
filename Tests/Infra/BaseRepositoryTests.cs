@@ -57,10 +57,7 @@ namespace Abc.Tests.Infra
         }
 
         [TestMethod]
-        public void GetByIdTest()
-        {
-            AddTest();
-        }
+        public void GetByIdTest() => AddTest();
 
         [TestMethod]
         public void DeleteTest()
