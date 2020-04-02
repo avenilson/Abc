@@ -90,7 +90,5 @@ namespace Abc.Tests.Infra
             var expected = obj.Get(data.Id).GetAwaiter().GetResult();
             TestArePropertyValuesEqual(newData, expected.Data);
         }
-
     }
-
 }
