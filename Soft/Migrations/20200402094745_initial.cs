@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Abc.Soft.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,15 +51,93 @@ namespace Abc.Soft.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: true),
+                    ValidTo = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
-                    Definition = table.Column<string>(nullable: true),
-                    ValidFrom = table.Column<DateTime>(nullable: true),
-                    ValidTo = table.Column<DateTime>(nullable: true)
+                    Definition = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Measures", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MeasureTerms",
+                columns: table => new
+                {
+                    MasterId = table.Column<string>(nullable: false),
+                    TermId = table.Column<string>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: true),
+                    ValidTo = table.Column<DateTime>(nullable: true),
+                    Power = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MeasureTerms", x => new { x.MasterId, x.TermId });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SystemsOfUnits",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: true),
+                    ValidTo = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Code = table.Column<string>(nullable: true),
+                    Definition = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SystemsOfUnits", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UnitFactors",
+                columns: table => new
+                {
+                    UnitId = table.Column<string>(nullable: false),
+                    SystemOfUnitsId = table.Column<string>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: true),
+                    ValidTo = table.Column<DateTime>(nullable: true),
+                    Factor = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UnitFactors", x => new { x.UnitId, x.SystemOfUnitsId });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Units",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: true),
+                    ValidTo = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Code = table.Column<string>(nullable: true),
+                    Definition = table.Column<string>(nullable: true),
+                    MeasureId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Units", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UnitTerms",
+                columns: table => new
+                {
+                    MasterId = table.Column<string>(nullable: false),
+                    TermId = table.Column<string>(nullable: false),
+                    ValidFrom = table.Column<DateTime>(nullable: true),
+                    ValidTo = table.Column<DateTime>(nullable: true),
+                    Power = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UnitTerms", x => new { x.MasterId, x.TermId });
                 });
 
             migrationBuilder.CreateTable(
@@ -227,6 +305,21 @@ namespace Abc.Soft.Migrations
 
             migrationBuilder.DropTable(
                 name: "Measures");
+
+            migrationBuilder.DropTable(
+                name: "MeasureTerms");
+
+            migrationBuilder.DropTable(
+                name: "SystemsOfUnits");
+
+            migrationBuilder.DropTable(
+                name: "UnitFactors");
+
+            migrationBuilder.DropTable(
+                name: "Units");
+
+            migrationBuilder.DropTable(
+                name: "UnitTerms");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

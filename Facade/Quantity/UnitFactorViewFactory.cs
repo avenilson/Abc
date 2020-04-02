@@ -1,5 +1,4 @@
-﻿using System;
-using Abc.Aids;
+﻿using Abc.Aids;
 using Abc.Data.Quantity;
 using Abc.Domain.Quantity;
 
