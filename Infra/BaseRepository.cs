@@ -46,7 +46,7 @@ namespace Abc.Infra
         {
             if (id is null) return new TDomain();
             var d = await getData(id);
-            var obj = new TDomain {Data = d};
+            var obj = ToDomainObject(d);
             return obj;
         }
 
@@ -56,7 +56,7 @@ namespace Abc.Infra
         {
             if (id is null) return;
 
-            var v = await dbSet.FindAsync(id);
+            var v = await getData(id);
 
             if (v is null) return;
             dbSet.Remove(v);
@@ -74,7 +74,7 @@ namespace Abc.Infra
         {
             if (obj is null) return;
 
-            var v = await dbSet.FindAsync(getId(obj));
+            var v = await getData(getId(obj));
 
             if (v is null) return;
             dbSet.Remove(v);

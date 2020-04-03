@@ -77,7 +77,5 @@ namespace Abc.Infra
 
             return predicate is null ? null : Expression.Lambda<Func<TData, bool>>(predicate, param);
         }
-
     }
-
 }

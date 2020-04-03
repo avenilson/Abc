@@ -69,7 +69,6 @@ namespace Abc.Infra
             {
                 return query;
             }
-
         }
 
         internal bool IsDescending() => !string.IsNullOrEmpty(SortOrder) && SortOrder.EndsWith(DescendingString);
