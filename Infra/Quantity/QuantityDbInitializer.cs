@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abc.Core.Units;
 using Abc.Data.Common;
 using Abc.Data.Quantity;
+using Core.Units;
 using Microsoft.EntityFrameworkCore;
 
 namespace Abc.Infra.Quantity {

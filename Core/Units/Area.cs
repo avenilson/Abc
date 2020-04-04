@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Abc.Core.Units {
+namespace Core.Units {
 
     public static class Area {
         public static Data Measure = new Data

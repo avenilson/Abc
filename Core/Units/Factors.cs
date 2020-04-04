@@ -1,4 +1,4 @@
-﻿namespace Abc.Core.Units {
+﻿namespace Core.Units {
 
     public static class Factors {
 

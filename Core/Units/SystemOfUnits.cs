@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Abc.Core.Units {
+namespace Core.Units {
 
     public static class SystemOfUnits {
 

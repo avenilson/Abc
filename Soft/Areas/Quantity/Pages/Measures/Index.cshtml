@@ -27,7 +27,7 @@
             @foreach (var item in Model.Items)
             {
                 <tr>
-                    @Html.TableRowFor(page, item.Id,
+                    @Html.TableRowFor(page, item.Id, Model.FixedFilter, Model.FixedValue,
                         Html.DisplayFor(modelItem => item.Id),
                         Html.DisplayFor(modelItem => item.Name),
                         Html.DisplayFor(modelItem => item.Code),
