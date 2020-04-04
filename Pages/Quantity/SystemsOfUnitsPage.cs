@@ -8,12 +8,12 @@ namespace Abc.Pages.Quantity
     {
         protected internal SystemsOfUnitsPage(ISystemsOfUnitsRepository r) : base(r)
         {
-            PageTitle = "Measure Terms";
+            PageTitle = "Systems Of Units";
         }
 
         public override string ItemId => Item.Id;
 
-        protected internal override string GetPageUrl() => "/Quantity/SystemOfUnits";
+        protected internal override string GetPageUrl() => "/Quantity/SystemsOfUnits";
 
         protected internal override SystemOfUnits ToObject(SystemOfUnitsView view)
         {

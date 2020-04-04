@@ -1,9 +1,9 @@
 ﻿@page
 @using Abc.Pages.Extensions
-@model Soft.Areas.Quantity.Pages.SystemOfUnits.DeleteModel
+@model Soft.Areas.Quantity.Pages.SystemsOfUnits.DetailsModel
 
 @{
-    Layout = "_Delete";
+    Layout = "_Details";
 }
 
 <body>
@@ -13,3 +13,6 @@
     @Html.DisplayControlsFor(model => model.Item.ValidFrom)
     @Html.DisplayControlsFor(model => model.Item.ValidTo)
 </body>
+
+@section Details
+{}
