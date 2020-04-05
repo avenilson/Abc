@@ -14,16 +14,14 @@ namespace Abc.Tests.Pages.Quantity
     {
         private class TestClass : MeasuresPage
         {
-            internal TestClass(IMeasuresRepository r) : base(r)
+            internal TestClass(IMeasuresRepository r, IMeasureTermsRepository t) : base(r, t)
             {
             }
         }
 
         private class TestRepository : BaseTestRepository<Measure, MeasureData>, IMeasuresRepository
-        {
-
-        }
-
+        { }
+      
         [TestInitialize]
         public override void TestInitialize()
         {
