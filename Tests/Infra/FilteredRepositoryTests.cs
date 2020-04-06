@@ -94,7 +94,7 @@ namespace Abc.Tests.Infra
         }
 
         [TestMethod]
-        public void CreateFixedWhereExpressionOnFidexFilterNullTest()
+        public void CreateFixedWhereExpressionOnFixedFilterNullTest()
         {
             Assert.IsNull(obj.createFixedWhereExpression());
             obj.FixedValue = GetRandom.String();

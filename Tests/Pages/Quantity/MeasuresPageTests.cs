@@ -12,12 +12,7 @@ namespace Abc.Tests.Pages.Quantity
     public class MeasuresPageTests : AbstractClassTests<MeasuresPage,
         CommonPage<IMeasuresRepository, Measure, MeasureView, MeasureData>>
     {
-        private class TestClass : MeasuresPage
-        {
-            internal TestClass(IMeasuresRepository r, IMeasureTermsRepository t) : base(r, t)
-            {
-            }
-        }
+        private class TestClass : MeasuresPage { internal TestClass(IMeasuresRepository r) : base(r, null) { } }
 
         private class TestRepository : BaseTestRepository<Measure, MeasureData>, IMeasuresRepository
         { }
