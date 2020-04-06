@@ -7,8 +7,8 @@
 }
 
     <body>
-        @Html.EditControlsFor(model => model.Item.SystemOfUnitsId)
-        @Html.EditControlsFor(model => model.Item.UnitId)
+        @Html.EditControlsForDropDown(model => model.Item.SystemOfUnitsId, Model.SystemsOfUnits)
+        @Html.EditControlsForDropDown(model => model.Item.UnitId, Model.Units)
         @Html.EditControlsFor(model => model.Item.Factor)
         @Html.EditControlsFor(model => model.Item.ValidFrom)
         @Html.EditControlsFor(model => model.Item.ValidTo)

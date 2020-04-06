@@ -12,17 +12,20 @@ namespace Abc.Tests.Pages.Quantity
     public class MeasuresPageTests : AbstractClassTests<MeasuresPage,
         CommonPage<IMeasuresRepository, Measure, MeasureView, MeasureData>>
     {
-        private class TestClass : MeasuresPage { internal TestClass(IMeasuresRepository r) : base(r, null) { } }
+        private class TestClass : MeasuresPage { internal TestClass(IMeasuresRepository r, IMeasureTermsRepository t) : base(r, t) { } }
+        private class TestRepository : BaseTestRepositoryForUniqueEntity<Measure, MeasureData>, IMeasuresRepository{}
+        private class TermRepository : BaseTestRepositoryForPeriodEntity<MeasureTerm, MeasureTermData>, IMeasureTermsRepository {
+            protected override bool isThis(MeasureTerm entity, string id) => true;
+            protected override string getId(MeasureTerm entity) => string.Empty;
+        }
 
-        private class TestRepository : BaseTestRepository<Measure, MeasureData>, IMeasuresRepository
-        { }
-      
         [TestInitialize]
         public override void TestInitialize()
         {
             base.TestInitialize();
             var r = new TestRepository();
-            obj = new TestClass(r);
+            var t = new TermRepository();
+            obj = new TestClass(r, t);
         }
 
         [TestMethod]
@@ -56,5 +59,16 @@ namespace Abc.Tests.Pages.Quantity
             var view = obj.ToView(new Measure(data));
             TestArePropertyValuesEqual(view, data);
         }
+
+        [TestMethod]
+        public void LoadDetailsTest()
+        {
+            var v = GetRandom.Object<MeasureView>();
+            obj.LoadDetails(v);
+            Assert.IsNotNull(obj.Terms);
+        }
+
+        [TestMethod]
+        public void TermsTest() => isReadOnlyProperty(obj, nameof(obj.Terms), obj.Terms);
     }
 }

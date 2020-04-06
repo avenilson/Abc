@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Abc.Data.Quantity;
 using Abc.Domain.Quantity;
 using Abc.Facade.Quantity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Abc.Pages.Quantity
 {
@@ -11,7 +13,6 @@ namespace Abc.Pages.Quantity
         {
             PageTitle = "Unit Factors";
         }
-
         public override string ItemId
         {
             get
@@ -21,18 +22,11 @@ namespace Abc.Pages.Quantity
             }
 
         }
-
         protected internal override string GetPageUrl() => "/Quantity/UnitFactors";
 
-        protected internal override UnitFactor ToObject(UnitFactorView view)
-        {
-            return UnitFactorViewFactory.Create(view);
-        }
+        protected internal override UnitFactor ToObject(UnitFactorView view) => UnitFactorViewFactory.Create(view);
 
-        protected internal override UnitFactorView ToView(UnitFactor obj)
-        {
-            return UnitFactorViewFactory.Create(obj);
-        }
+        protected internal override UnitFactorView ToView(UnitFactor obj) => UnitFactorViewFactory.Create(obj);
     }
 }
 

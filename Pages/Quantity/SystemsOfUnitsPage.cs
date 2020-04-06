@@ -10,20 +10,10 @@ namespace Abc.Pages.Quantity
         {
             PageTitle = "Systems Of Units";
         }
-
         public override string ItemId => Item.Id;
-
         protected internal override string GetPageUrl() => "/Quantity/SystemsOfUnits";
-
-        protected internal override SystemOfUnits ToObject(SystemOfUnitsView view)
-        {
-            return SystemOfUnitsViewFactory.Create(view);
-        }
-
-        protected internal override SystemOfUnitsView ToView(SystemOfUnits obj)
-        {
-            return SystemOfUnitsViewFactory.Create(obj);
-        }
+        protected internal override SystemOfUnits ToObject(SystemOfUnitsView view) => SystemOfUnitsViewFactory.Create(view);
+        protected internal override SystemOfUnitsView ToView(SystemOfUnits obj) => SystemOfUnitsViewFactory.Create(obj);
     }
 }
 

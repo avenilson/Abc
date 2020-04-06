@@ -32,10 +32,7 @@ namespace Abc.Pages.Quantity
             terms.FixedValue = item.Id;
             var list = terms.Get().GetAwaiter().GetResult();
 
-            foreach (var e in list)
-            {
-                Terms.Add(MeasureTermViewFactory.Create(e));
-            }
+            foreach (var e in list) Terms.Add(MeasureTermViewFactory.Create(e));
         }
     }
 }

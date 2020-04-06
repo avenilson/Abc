@@ -10,9 +10,9 @@ namespace Abc.Tests.Pages.Extensions
         public virtual void TestInitialize() => type = typeof(TableRowForHtmlExtension);
 
         [TestMethod]
-        public void TableRowForTest()
-        {
-            Assert.Inconclusive();
-        }
+        public void TableRowForTest() => Assert.Inconclusive();
+
+        [TestMethod]
+        public void TableRowWithSelectForTest() => Assert.Inconclusive();
     }
 }
